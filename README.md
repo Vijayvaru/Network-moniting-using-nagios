@@ -98,11 +98,34 @@ Ideal for monitoring network devices or cloud-based resources.
 NRDP (Nagios Remote Data Processor):
 NRDP allows remote systems to send data to Nagios via HTTP/HTTPS, useful when direct access or agent installation isn’t possible, such as in cloud environments or behind firewalls.
 
+# Step-by-Step Process for Installing and Configuring Nagios:
+-------------------------------------------------------------
 
+Step 1: 
+Log in to AWS Management Console
+Go to the AWS Management Console and login with credentials
+Navigate to EC2 Dashboard and launch ec2 instance
 
+<img width="1024" height="164" alt="image" src="https://github.com/user-attachments/assets/ab7ab664-fabb-45d0-879f-e011c935462f" />
 
+Step 2: Install Required Dependencies
+Install Apache
+Now install apache by using following commands
+---------------------------------------------
+| steps |      1st  commend           |  -- end |
+|------ |:------------------------:|--------:|
+|  2    | sudo yum install httpd -y| done✅ |
+----------------------------------------------
 
+<img width="517" height="307" alt="image" src="https://github.com/user-attachments/assets/f9b20cc5-9082-4646-b347-51d6e4bf01cd" />
 
+-----------------------------------------------
+| steps |     2nd   commend         |  -- end |
+|------ |:-------------------------:|--------:|
+|  2 (1)|sudo systemctl start httpd | done✅ |
+|  2(2) |sudo systemctl enable httpd| done✅ |
+----------------------------------------------
+<img width="672" height="39" alt="image" src="https://github.com/user-attachments/assets/d65f82c3-bb7d-4346-bdbb-f7117361bb65" />
 
 
 
