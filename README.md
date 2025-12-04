@@ -140,5 +140,3 @@ Now install apache by using following commands
 
 
 
-
-
