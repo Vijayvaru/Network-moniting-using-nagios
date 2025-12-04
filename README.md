@@ -34,3 +34,14 @@ Time Period: Defines when checks and notifications are active, which results in 
 
 Downtime: It lets monitoring checks of hosts or services be dropped, useful for when maintenance is occurring.
 Status Information: This includes descriptive information that Nagios reports about the status of hosts and services at a particular moment in time.
+
+<img width="1900" height="1219" alt="image" src="https://github.com/user-attachments/assets/575d79dd-c4ae-4500-985c-2911ad8eeb64" />
+
+
+
+
+
+
+
+
+
