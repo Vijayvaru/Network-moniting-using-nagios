@@ -43,16 +43,16 @@ To setup up the monitor : two types of setup options
 #### Agentless: Uses existing protocols to gather data without installing additional software on servers. Both methods monitor critical system metrics like file system usage, CPU performance, and service status.
 
 
-Dashboards and Alerts: The Nagios dashboard offers a real-time overview of key parameters, making it easy to track system health. 
+#### Dashboards and Alerts: The Nagios dashboard offers a real-time overview of key parameters, making it easy to track system health. 
 When predefined thresholds, such as high CPU usage or low disk space, are crossed, Nagios sends alerts via email or SMS.
 This ensures administrators can respond quickly to issues, minimizing downtime.
 
-Plugins and Scripts: Nagios runs as a service on a server and uses small scripts or plugins to check the status of hosts and services in your network. 
+#### Plugins and Scripts: Nagios runs as a service on a server and uses small scripts or plugins to check the status of hosts and services in your network. 
 These plugins, written in languages like Perl or shell script, are executed at regular intervals. 
 Results are collected and stored for review. 
 If a significant change is detected, additional scripts are triggered, and further actions or notifications are initiated.
 
-Integration with AWS: Nagios integrates seamlessly with AWS environments.
+#### Integration with AWS: Nagios integrates seamlessly with AWS environments.
 When installed on AWS, it provides scalable and secure monitoring for cloud infrastructure. 
 The collected data is accessible through the Nagios web interface, allowing administrators to monitor both local and cloud systems in real-time. 
 We discuss this installation process in more detail in the section below
