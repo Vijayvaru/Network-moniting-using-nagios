@@ -1,6 +1,6 @@
 # Network-moniting-using-nagios
 my project
 
-Nagios plays a vital role in safeguarding the health and performance of IT systems in today’s highly connected digital environment, regardless of an organization’s size. 
+### Nagios plays a vital role in safeguarding the health and performance of IT systems in today’s highly connected digital environment, regardless of an organization’s size. 
 Built by Ethan Galstad and the Nagios community, Nagios Core provides a comprehensive framework for monitoring network services, host resources, and overall system availability.
 Its proactive detection capabilities help identify and address issues before they escalate. Key features include configuration via text files, extensibility through plugins, and detailed reporting for actionable insights. The book aims to equip IT professionals with the knowledge and practical skills needed to deploy, configure, and manage Nagios effectively, covering installation, advanced setup, and troubleshooting to ensure organizational reliability and efficiency.
