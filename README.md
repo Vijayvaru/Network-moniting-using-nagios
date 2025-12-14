@@ -127,8 +127,17 @@ Now install apache by using following commands
 ----------------------------------------------
 <img width="672" height="39" alt="image" src="https://github.com/user-attachments/assets/d65f82c3-bb7d-4346-bdbb-f7117361bb65" />
 
+### install php
+now,
 
+----------------------------------------------------------------
+| steps |                   2nd   commend            |  -- end |
+|------ |:------------------------------------------:|--------:|
+|  2 (1)|sudo amazon-linux-extras install php7.4 -y  | done✅ |
+|  2(2) |     sudo systemctl restart httpd           | done✅ |
+----------------------------------------------------------------
 
+<img width="1060" height="365" alt="image" src="https://github.com/user-attachments/assets/b01e75ae-f923-4e0a-b5f5-4c14ec92e4b4" />
 
 
 
