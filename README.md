@@ -120,7 +120,7 @@ Now install apache by using following commands
 <img width="517" height="307" alt="image" src="https://github.com/user-attachments/assets/f9b20cc5-9082-4646-b347-51d6e4bf01cd" />
 
 -----------------------------------------------
-| steps |     2nd   commend         |  -- end |
+| steps |     2nd   commend         |     end |
 |------ |:-------------------------:|--------:|
 |  2 (1)|sudo systemctl start httpd | done✅ |
 |  2(2) |sudo systemctl enable httpd| done✅ |
