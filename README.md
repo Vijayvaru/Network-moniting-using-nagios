@@ -139,6 +139,240 @@ now,
 
 <img width="1060" height="365" alt="image" src="https://github.com/user-attachments/assets/b01e75ae-f923-4e0a-b5f5-4c14ec92e4b4" />
 
+## Install GCC and other dependencies:
+
+
+---------------------------------------------------------------------------------------------------------------------
+|         steps |                   -          3nd   commend                                              |  -- end |
+|---------------|:---------------------------------------------------------------------------------------:|--------:|
+|  3(1)        |sudo yum install gcc glibc glibc-common wget unzip httpd php gd gd-devel perl postfix -y | done✅ |
+--------------------------------------------------------------------------------------------------------------------
+
+<img width="655" height="312" alt="image" src="https://github.com/user-attachments/assets/0076b2bb-1f24-4ab2-9d40-5cf8baebbd12" />
+
+Step 3: Install Nagios Core
+Create Nagios User and Group:
+
+----------------------------------------------------------------
+| steps |                   2nd   commend            |  -- end |
+|------ |:------------------------------------------:|--------:|
+|  3(1)|     sudo useradd nagios                    | done✅ |
+|  3(2) |   sudo usermod -a -G nagios apache         | done✅ |
+----------------------------------------------------------------
+
+### cd /tmp
+wget https://assets.nagios.com/downloads/nagioscore/releases/nagios-4.4.6.tar.gz
+tar -zxvf nagios-4.4.6.tar.gz
+cd nagios-4.4.6
+
+<img width="1048" height="421" alt="image" src="https://github.com/user-attachments/assets/34db4344-35c2-4d4b-afb0-186bdfb4ccc6" />
+
+Compile and Install Nagios:
+
+
+
+----------------------------------------------------------------------------
+| steps |                   3nd   commend                        |  -- end |
+|------ |:-------------------------------------------------------|--------:|
+|  3(1)|  sudo ./configure --with-command-group=nagios           | done✅  | 
+|       |  sudo make                                             | done✅  | 
+|       |  sudo make install                                     | done✅  | 
+|       |  sudo make install-init                                | done✅  | 
+|       |  sudo make install-commandmode                         | done✅  | 
+|       |  sudo make install-config                              | done✅  | 
+|       |  sudo make install-webconf                             | done✅  |                                                 
+----------------------------------------------------------------------------
+
+<img width="986" height="396" alt="image" src="https://github.com/user-attachments/assets/4724897a-c713-4674-a684-f7db2e82d1ee" />
+
+## Set Up Web Interface:
+
+-----------------------------------------------------------------------------------------
+| steps |                                            3nd   commend            |  -- end |
+|------ |:-------------------------------------------------------------------:|--------:|
+|  3 (1)|   sudo htpasswd -c /usr/local/nagios/etc/htpasswd.users nagiosadmin | done✅ | 
+----------------------------------------------------------------------------------------
+
+## Here Set your password
+
+<img width="875" height="81" alt="image" src="https://github.com/user-attachments/assets/8227fe0b-0672-4c5b-8828-6c153b2128ea" />
+
+## Step 4: Install Nagios Plugins
+
+ Download and Extract Plugins:
+
+--------------------------------------------------------------------------------------
+| steps |                       4nd   commend                              |  -- end |
+|------ |:----------------------------------------------------------------:|--------:|
+|  4(1) |    cd /tmp                                                                 |
+|       |   wget https://nagios-plugins.org/download/nagios-plugins-2.3.3.tar.gz     |
+|  4(2) |    tar -zxvf nagios-plugins-2.3.3.tar.gz                                   |
+|  4(3) |    cd nagios-plugins-2.3.3                                                 |
+--------------------------------------------------------------------------------------
+
+<img width="1046" height="406" alt="image" src="https://github.com/user-attachments/assets/1007b145-f4de-4222-b589-558bb825acad" />
+
+## Compile and Install Plugins:
+
+
+-----------------------------------------------------------------
+| steps |                   4nd   commend            |   end    |
+|------ |:------------------------------------------:|---------:|
+|       |     sudo ./configure                       |          |
+| 4(1)  |      sudo make                             | done✅  |
+| 4(2)  |    sudo make install                       | done✅  |              
+-----------------------------------------------------------------
+
+<img width="755" height="322" alt="image" src="https://github.com/user-attachments/assets/4e60ee9e-879b-44fc-8144-f5bbe85dd876" />
+
+## Step 5: Start and Verify Nagios
+
+Enable and Start Nagios Service:
+
+-----------------------------------------------------------------
+| steps |                   4nd   commend            |   end    |
+|------ |:------------------------------------------:|---------:|
+| 5(1)  |     sudo systemctl enable nagios           | done✅  |
+| 5(1)  |     sudo systemctl start nagios            | done✅  |                       
+-----------------------------------------------------------------
+
+<img width="1096" height="73" alt="image" src="https://github.com/user-attachments/assets/15bdf9c7-28c1-41b5-9b68-4471216fac35" />
+## Verify Nagios
+
+Open your web browser and navigate to http://your-instance-public ip/nagios and log in with the username nagiosadmin and the password you set.
+
+<img width="729" height="322" alt="image" src="https://github.com/user-attachments/assets/7cda0ec2-ea2a-4af1-af4e-6c0fd8d7719d" />
+
+## In below figure we see official page of nagios
+
+ <img width="775" height="322" alt="image" src="https://github.com/user-attachments/assets/8b7b5f34-4d7a-4409-b672-b667d2943642" />
+
+### Step 6: Configure Nagios to Monitor a Host
+
+Define a Host
+
+Edit the hosts configuration file
+
+--------------------------------------------------------------------------------------
+| steps |                           4nd   commend                          |   end    |
+|------ |:----------------------------------------------------------------:|---------:|
+| 6(1)  |      sudo vi /usr/local/nagios/etc/objects/localhost.cfg         | done✅  |
+---------------------------------------------------------------------------------------
+
+Here is a complete example of the localhost.cfg file
+
+## Define a host for the local machine
+
+define host {
+
+    use                     linux-server
+
+    host_name       localhost
+
+    alias                   localhost
+
+    address             127.0.0.1 #replace with your IP Address
+
+}
+
+## Define a service to check the load on the local machine
+
+define service {
+
+    use                                  generic-service
+
+    host_name                    localhost
+
+    service_description      HTTP
+
+    check_command          check_http
+
+}
+
+## Define a hostgroup for Linux servers
+
+define hostgroup {
+
+    hostgroup_name   linux-servers
+
+    alias                           Linux Servers
+
+    members                 localhost
+
+}
+
+<img width="755" height="375" alt="image" src="https://github.com/user-attachments/assets/b6d1570f-5c7a-4f13-9227-5b137b29c9ac" />
+
+
+### Restart Nagios
+
+Now restart Nagios to apply all host and service details
+
+--------------------------------------------------------------------------------------
+| steps |                           4nd   commend                          |   end    |
+|------ |:----------------------------------------------------------------:|---------:|
+| 6(1)  |                 sudo systemctl restart nagios                    | done✅  |
+---------------------------------------------------------------------------------------
+
+
+## Step7: Verify
+
+If your server's IP address is 172.31.46.7, you would access Nagios by entering http://172.31.46.7/nagios in your web browser's address bar.
+
+# Services
+
+<img width="987" height="387" alt="image" src="https://github.com/user-attachments/assets/62ce8a09-1879-47cc-b407-286f85510d57" />
+
+
+
+
+
+Host Details
+
+<img width="775" height="322" alt="image" src="https://github.com/user-attachments/assets/0f0f871e-bdc7-4b4d-b91e-343ee0493b2c" />
+
+## Benefits of Nagios
+
+In-Depth Infrastructure Oversight: Nagios delivers detailed tracking of hosts, services, applications, networks, and critical components, offering complete visibility and proactive issue detection.
+
+Effective Alerting System: Features reliable notifications with escalation options, multiple channels (email, SMS, etc.), and timely warnings to enable rapid resolution and minimize disruptions.
+
+Extensive Extensibility: Built on a robust plugin ecosystem with thousands of community contributions, allowing tailored checks for virtually any system or custom requirement.
+
+Proven Reliability and Efficiency: Known for stability, low resource usage, and high performance, even on modest hardware, making it suitable for long-term deployments.
+
+Vibrant Open-Source Ecosystem: Backed by a dedicated global community providing ongoing plugins, updates, and resources, ensuring adaptability to new technologies.
+
+Insightful Analytics and Visualization: Includes trend graphs, performance charts, and reporting tools to support forecasting, capacity management, and informed decisions.
+
+## Drawbacks of Nagios
+
+Challenging Initial Deployment: Requires manual configuration via files and command-line expertise, which can be time-consuming and demanding for beginners.
+
+Potential Performance Impact: Intensive polling schedules may consume system resources, especially in large-scale environments with frequent checks.
+
+Significant Skill Requirement: Features a notable learning curve, particularly for customization, integration, and effective troubleshooting.
+
+Legacy Web Experience: The standard interface appears outdated and less polished compared to contemporary tools with intuitive, modern designs.
+
+Scheduled Check Model: Relies primarily on polling intervals rather than push-based or instant metrics, potentially delaying detection in highly dynamic setups.
+
+Plugin Dependency Management: Core features often require third-party plugins, which may vary in quality, maintenance, or compatibility over time.
+
+
+# Conclusion
+Nagios stands as a robust and widely adopted open-source monitoring tool designed to maintain reliability and performance across IT infrastructures. 
+Its comprehensive monitoring capabilities, combined with powerful alerting and notification systems, empower organizations to detect and address potential issues proactively, thereby minimizing downtime and enhancing operational efficiency.
+
+Although Nagios excels in customization, scalability, and benefits from a vibrant community with extensive plugin support, it does come with certain challenges, including a complex setup process, a steep learning curve for newcomers, and potential resource overhead on monitored systems. These aspects highlight the need for careful planning and configuration expertise to fully leverage its strengths.
+
+Overall, Nagios remains an excellent choice for organizations seeking a flexible, extensible, and cost-effective monitoring solution suited to diverse IT environments. By utilizing its detailed insights and timely alerts, teams can stay ahead of infrastructure issues and ensure consistent, high-performance service delivery.
+
+
+
+
+
+
 
 
 
